@@ -24,6 +24,16 @@ void printList(struct Node *head){
     }
 }
 
+void free_list(struct Node **head){
+    struct Node *last = *head;
+    while (last != NULL){
+        struct Node *cur = last;
+        last = last->next;
+        free(cur);
+    }
+    *head = NULL;
+}
+
 void pushList(struct Node **head, struct Node *newNode){
     newNode->next = *head;
     *head = newNode;
